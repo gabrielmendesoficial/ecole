@@ -1,28 +1,31 @@
 package br.com.fiap.domain.service;
-
 import br.com.fiap.domain.entity.Turma;
-import br.com.fiap.exception.MetodoNaoImplementadoException;
-
+import br.com.fiap.domain.repository.TurmaRepository;
 import java.util.List;
+import java.util.Objects;
 
 public class TurmaService implements Service<Turma, Long> {
+    private TurmaRepository repository;
+    public TurmaService(TurmaRepository turmaRepository) {
+        this.repository = new TurmaRepository();
+    }
     @Override
     public List<Turma> findAll() {
-        throw new MetodoNaoImplementadoException("Método não Implementado");
+        return repository.findAll();
     }
-
     @Override
     public Turma findById(Long id) {
-        throw new MetodoNaoImplementadoException("Método não Implementado");
+        return repository.findById(id);
     }
-
     @Override
     public List<Turma> findByName(String texto) {
-        throw new MetodoNaoImplementadoException("Método não Implementado");
+        return repository.findByName(texto);
     }
-
     @Override
     public Turma persist(Turma turma) {
-        throw new MetodoNaoImplementadoException("Método não Implementado");
+        if (Objects.nonNull(turma)){
+            return repository.persist(turma);
+        }
+        return null;
     }
 }

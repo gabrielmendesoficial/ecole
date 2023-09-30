@@ -18,16 +18,7 @@ public interface Service<T, U> {
         return Objects.nonNull( s ) && !s.trim().isEmpty();
     }
 
-    /**
-     * Validando email
-     *
-     * @param emailAddress
-     * @return
-     */
     default boolean validarEmail(String emailAddress) {
-        //Expressão Regular. Para saber mais:
-        //Dica de leitura: Expressões Regulares: Uma Abordagem Divertida
-        //ISBN 13: 978-8575224748
         var regexPattern = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
         return Pattern.compile( regexPattern )
                 .matcher( emailAddress )
